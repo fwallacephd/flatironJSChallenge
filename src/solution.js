@@ -47,8 +47,9 @@ CommentsController.prototype.render = (commentObject) => {
   const commentItem = Comment.prototype.commentEl(commentObject);
   commentList.appendChild(commentItem);
   console.log(commentList);
+}
 
-  //The comment function receives two parameters
+//The comment function receives two parameters
 //this is the constructor for the comment class
 function Comment (id, commentContent) {
   this.id = id;
@@ -61,13 +62,13 @@ function Comment (id, commentContent) {
 
 //Comment.prototype.add is a function
 //Should return all of the comment objects in an array
-Comment.prototype.all = function () {
+Comment.prototype.all = () => {
   return Comment.comments;
 }
 
 //the Comment.prototype.findImage is a function
 //it takes in the parameter from line 5
-Comment.prototype.findImage = function(dataID) {
+Comment.prototype.findImage = (dataID) => {
 //We get the nth element from the Image.all array of images from the Image class (see other code file).
 const imageElement = Image.all[dataID];
 //We pushed the current instance of the comment to the comments arary in the Image object
@@ -79,7 +80,7 @@ return imageElement;
 
 //the Comment.prototype.commentEl function creates the li element
 //The parameter 'this' is the comment object
-Comment.prototype.commentEl = function(element) {
+Comment.prototype.commentEl = (element) => {
 //console.log('comment content', this);
 //console.log('comment element', element.commentContent);
 const li = document.createElement('li');
