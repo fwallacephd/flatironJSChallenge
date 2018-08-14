@@ -27,9 +27,7 @@ class CommentsController {
     //We grab the coment value from the event object using the class selector and store the value
     //We instantiate the Comment class using the dataID and commentValue.
     //We call the render function passing the comment as a parameter
-    console.log(event);
     const dataID = event.srcElement.getAttribute('data-id');
-    console.log (dataID);
     const commentValue = event.srcElement.querySelector('.user-text').value;
     const comment = new Comment (dataID, commentValue);
     event.srcElement.querySelector('.user-text').value = '';
@@ -42,11 +40,9 @@ class CommentsController {
 CommentsController.prototype.render = (commentObject) => {
   //gets the element by building an ID using the commentObject.id
   const commentList = document.querySelector('#comments-' + commentObject.id);
-  //appends the LI to the UL element -- Not quite working yet.
   //Uses the commentEL function from the Comment class
   const commentItem = Comment.prototype.commentEl(commentObject);
   commentList.appendChild(commentItem);
-  console.log(commentList);
 }
 
 //The comment function receives two parameters
@@ -79,10 +75,7 @@ return imageElement;
 }
 
 //the Comment.prototype.commentEl function creates the li element
-//The parameter 'this' is the comment object
 Comment.prototype.commentEl = (element) => {
-//console.log('comment content', this);
-//console.log('comment element', element.commentContent);
 const li = document.createElement('li');
 li.setAttribute('id', element.id);
 li.appendChild(document.createTextNode(element.commentContent));
